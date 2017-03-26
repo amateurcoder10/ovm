@@ -30,6 +30,16 @@ static struct object * String_print(struct closure * cls, HString self)
 	return (struct object * )self;
 }
 
+//String>>append
+static struct object *String_append(struct closure *cls, HString self, HString string2)
+{	HString result=(HString)send(vtof(self),s_vtallocate,sizeof(struct mystring));
+	result->length=self->length+string2->length;
+	result->chars=strdup(self->chars);
+	for(int i=0;i<string2->length;i++)
+		result->chars[self->length+i]=string2->chars[i];
+	return (struct object *)result;
+
+}
 // ------------------------ Begin Array definitions
 struct array { _VTABLE_REF; int length; struct object **contents; };
 typedef struct array *HArray;
@@ -71,10 +81,12 @@ static struct object *Array_atput(struct closure *cls, HArray self, int ix, stru
 
 static struct symbol *s_at;
 static struct symbol *s_atput;
-
+static struct symbol *s_append;
 int main(int argc, char *argv[])
 {
 	init_ovm();
+	
+	s_append= (typeof(s_append))send(Symbol,s_newp,"append:");
 
 	s_at    = (typeof(s_at))   send(Symbol, s_newp, "at:");//newp is already mapped to symbol_newp;send a message with symbol as receiver,selector as s_newp and args as at;its oop is returned
 	s_atput = (typeof(s_atput))send(Symbol, s_newp, "at:put:");
@@ -88,6 +100,7 @@ int main(int argc, char *argv[])
 	send(String_vt, s_vtadd_method, s_newp,   (method_t)String_newp);//message to string vt add method is the selector its arguments are method name and method itself
 	send(String_vt, s_vtadd_method, s_length, (method_t)String_length);
 	send(String_vt, s_vtadd_method, s_print,  (method_t)String_print);
+	send(String_vt,s_vtadd_method,s_append,   (method_t)String_append);
 
 	struct object *greet = send(String, s_newp, "Object Machine v1.0\n");//send a message to string object with selector new and arg as the phrase;send returns an object pointing to the appropriate method with receiver selector and argumenets;basically a pointer to the message in its entirety
 	struct object *h     = send(String, s_newp, "hello");
@@ -122,5 +135,19 @@ int main(int argc, char *argv[])
 	send(line, s_atput, 3, w); send(line, s_atput, 4, nl);
 	for (int i = 1; i <= 4; i++)
 		send(send(line, s_at, i), s_print);
+	printf("\n\n");
+	printf("testing string method append:\n");
+	printf("appending hello and space:\n");
+	struct object *hs=send(h,s_append,sp);
+	send(hs,s_print);
+	printf("\n");
+	printf("appending world:\n");
+	struct object *hw=send(hs,s_append,w);
+	send(hw,s_print);
+	printf("\n");
+	printf("appending newline:the final string is\n");
+	struct object *hn=send(hw,s_append,nl);
+	send(hn,s_print);
+
 	return 0;
 }
