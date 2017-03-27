@@ -1,0 +1,816 @@
+Script started on Sunday 26 March 2017 12:32:07 PM IST
+pra@pra-VirtualBox:~/2sem/mos/a2$ echo author Prashanthi S.K
+author Prashanthi S.K
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x22550b8 parent 0x2255158 (Object_vt) size 4 tally 4
+    0 key 0x2255338 (#lookup) value 0x22555e8
+    1 key 0x2255378 (#add_method) value 0x2255608
+    2 key 0x22553c8 (#allocate) value 0x2255138
+    3 key 0x2255458 (#delegate) value 0x2255118
+obj Proto 0x2255628 vt Proto_vt 0x22550b8
+vt Object_vt 0x2255158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x2255648 vt Object_vt 0x2255158
+vt Symbol_vt 0x22551f8 parent 0x2255158 (Object_vt) size 4 tally 3
+    0 key 0x2255488 (#new:) value 0x2255a98
+    1 key 0x2255568 (#print) value 0x2255ab8
+    2 key 0x22555a8 (#length) value 0x2255278
+obj Symbol 0x2255668 vt Symbol_vt 0x22551f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+pra@pra-VirtualBox:~/2sem/mos/a2$ git init
+Initialized empty Git repository in /home/pra/2sem/mos/a2/.git/
+pra@pra-VirtualBox:~/2sem/mos/a2$ git add ovm.c
+pra@pra-VirtualBox:~/2sem/mos/a2$ git add ovmhello.c
+pra@pra-VirtualBox:~/2sem/mos/a2$ git commit -a "first commit
+> "^C
+pra@pra-VirtualBox:~/2sem/mos/a2$ git commit -a "first commit"
+fatal: Paths with -a does not make sense.
+pra@pra-VirtualBox:~/2sem/mos/a2$ git commit -a 
+
+[master (root-commit) 9b7511d] First commit
+ 2 files changed, 496 insertions(+)
+ create mode 100755 ovm.c
+ create mode 100755 ovmhello.c
+pra@pra-VirtualBox:~/2sem/mos/a2$ git git remote add origin https://github.com/a 
+mateurcoder10/ovm.git             it git remote add origin https://github.com/ampra@pra-VirtualBox:~/2sem/mos/a2$ t git remote add origin https://github.com/amapra@pra-VirtualBox:~/2sem/mos/a2$  git remote add origin https://github.com/amatpra@pra-VirtualBox:~/2sem/mos/a2$ git remote add origin https://github.com/amatepra@pra-VirtualBox:~/2sem/mos/a2$ 
+
+
+pra@pra-VirtualBox:~/2sem/mos/a2$ git push origin master
+Username for 'https://github.com': amateurcoder10
+Password for 'https://amateurcoder10@github.com': 
+Counting objects: 4, done.
+Compressing objects:  25% (1/4)   
+Compressing objects:  50% (2/4)   
+Compressing objects:  75% (3/4)   
+Compressing objects: 100% (4/4)   
+Compressing objects: 100% (4/4), done.
+Writing objects:  25% (1/4)   
+Writing objects:  50% (2/4)   
+Writing objects:  75% (3/4)   
+Writing objects: 100% (4/4)   
+Writing objects: 100% (4/4), 5.12 KiB | 0 bytes/s, done.
+Total 4 (delta 0), reused 0 (delta 0)
+To https://github.com/amateurcoder10/ovm.git
+ * [new branch]      master -> master
+pra@pra-VirtualBox:~/2sem/mos/a2$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	oh
+	ovm
+	ovm1.log
+	ovmhelloorg.c
+	ovmorg.c
+	typescript
+	vt
+	vt.c
+
+nothing added to commit but untracked files present (use "git add" to track)
+pra@pra-VirtualBox:~/2sem/mos/a2$ git remote add origin https://github.com/amateu
+pra@pra-VirtualBox:~/2sem/mos/a2$     commit -a 
+                                  gcc ovmhello.c -o oh
+ovmhello.c:34:72: error: unknown type name ‘Hstring’
+ tic struct object *String_append(struct closure *cls, HString self, Hstring str
+                                                                     ^
+In file included from ovmhello.c:1:0:
+ovmhello.c: In function ‘main’:
+ovmhello.c:102:51: error: ‘String_append’ undeclared (first use in this function)
+  send(String_vt,s_vtadd_method,s_append,(method_t)String_append);
+                                                   ^
+ovm.c:200:29: note: in definition of macro ‘send’
+       c ? c->method(c, r, ##__VA_ARGS__) : 0; \
+                             ^
+ovmhello.c:102:51: note: each undeclared identifier is reported only once for each function it appears in
+  send(String_vt,s_vtadd_method,s_append,(method_t)String_append);
+                                                   ^
+ovm.c:200:29: note: in definition of macro ‘send’
+       c ? c->method(c, r, ##__VA_ARGS__) : 0; \
+                             ^
+ovmhello.c:138:43: error: expected ‘;’ before ‘:’ token
+  printf("testing string method append:\n"):
+                                           ^
+In file included from ovmhello.c:1:0:
+ovmhello.c:141:7: error: ‘hw’ undeclared (first use in this function)
+  send(hw,s_print);
+       ^
+ovm.c:198:45: note: in definition of macro ‘send’
+       struct object  *r = (struct object *)(receiver); \
+                                             ^
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+ovmhello.c: In function ‘String_append’:
+ovmhello.c:35:3: error: unknown type name ‘Hstring’
+ { Hstring result=(HString)send(vtof(self),s_vtallocate,sizeof(struct mystring))
+   ^
+ovmhello.c:35:18: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ { Hstring result=(HString)send(vtof(self),s_vtallocate,sizeof(struct mystring))
+                  ^
+ovmhello.c:36:8: error: invalid type argument of ‘->’ (have ‘int’)
+  result->length=self->length+string2->length;
+        ^
+ovmhello.c:38:8: error: invalid type argument of ‘->’ (have ‘int’)
+  result->chars[self->length+i]=string2->chars[i];
+        ^
+ovmhello.c:39:9: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  return (struct object *)result;
+         ^
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+ovmhello.c: In function ‘String_append’:
+ovmhello.c:35:3: error: unknown type name ‘Hstring’
+ { Hstring result=(HString)send(vtof(self),s_vtallocate,sizeof(struct mystring))
+   ^
+ovmhello.c:35:18: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ { Hstring result=(HString)send(vtof(self),s_vtallocate,sizeof(struct mystring))
+                  ^
+ovmhello.c:36:8: error: invalid type argument of ‘->’ (have ‘int’)
+  result->length=self->length+string2->length;
+        ^
+ovmhello.c:36:21: error: ‘struct object’ has no member named ‘length’
+  result->length=self->length+string2->length;
+                     ^
+ovmhello.c:38:8: error: invalid type argument of ‘->’ (have ‘int’)
+  result->chars[self->length+i]=string2->chars[i];
+        ^
+ovmhello.c:38:20: error: ‘struct object’ has no member named ‘length’
+  result->chars[self->length+i]=string2->chars[i];
+                    ^
+ovmhello.c:39:9: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  return (struct object *)result;
+         ^
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+ovmhello.c: In function ‘String_append’:
+ovmhello.c:36:21: error: ‘struct object’ has no member named ‘length’
+  result->length=self->length+string2->length;
+                     ^
+ovmhello.c:38:20: error: ‘struct object’ has no member named ‘length’
+  result->chars[self->length+i]=string2->chars[i];
+                    ^
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x25580b8 parent 0x2558158 (Object_vt) size 4 tally 4
+    0 key 0x2558338 (#lookup) value 0x25585e8
+    1 key 0x2558378 (#add_method) value 0x2558608
+    2 key 0x25583c8 (#allocate) value 0x2558138
+    3 key 0x2558458 (#delegate) value 0x2558118
+obj Proto 0x2558628 vt Proto_vt 0x25580b8
+vt Object_vt 0x2558158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x2558648 vt Object_vt 0x2558158
+vt Symbol_vt 0x25581f8 parent 0x2558158 (Object_vt) size 4 tally 3
+    0 key 0x2558488 (#new:) value 0x2558a98
+    1 key 0x2558568 (#print) value 0x2558ab8
+    2 key 0x25585a8 (#length) value 0x2558278
+obj Symbol 0x2558668 vt Symbol_vt 0x25581f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+Segmentation fault (core dumped)
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x1cd90b8 parent 0x1cd9158 (Object_vt) size 4 tally 4
+    0 key 0x1cd9338 (#lookup) value 0x1cd95e8
+    1 key 0x1cd9378 (#add_method) value 0x1cd9608
+    2 key 0x1cd93c8 (#allocate) value 0x1cd9138
+    3 key 0x1cd9458 (#delegate) value 0x1cd9118
+obj Proto 0x1cd9628 vt Proto_vt 0x1cd90b8
+vt Object_vt 0x1cd9158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1cd9648 vt Object_vt 0x1cd9158
+vt Symbol_vt 0x1cd91f8 parent 0x1cd9158 (Object_vt) size 4 tally 3
+    0 key 0x1cd9488 (#new:) value 0x1cd9a98
+    1 key 0x1cd9568 (#print) value 0x1cd9ab8
+    2 key 0x1cd95a8 (#length) value 0x1cd9278
+obj Symbol 0x1cd9668 vt Symbol_vt 0x1cd91f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x16a40b8 parent 0x16a4158 (Object_vt) size 4 tally 4
+    0 key 0x16a4338 (#lookup) value 0x16a45e8
+    1 key 0x16a4378 (#add_method) value 0x16a4608
+    2 key 0x16a43c8 (#allocate) value 0x16a4138
+    3 key 0x16a4458 (#delegate) value 0x16a4118
+obj Proto 0x16a4628 vt Proto_vt 0x16a40b8
+vt Object_vt 0x16a4158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x16a4648 vt Object_vt 0x16a4158
+vt Symbol_vt 0x16a41f8 parent 0x16a4158 (Object_vt) size 4 tally 3
+    0 key 0x16a4488 (#new:) value 0x16a4a98
+    1 key 0x16a4568 (#print) value 0x16a4ab8
+    2 key 0x16a45a8 (#length) value 0x16a4278
+obj Symbol 0x16a4668 vt Symbol_vt 0x16a41f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x10940b8 parent 0x1094158 (Object_vt) size 4 tally 4
+    0 key 0x1094338 (#lookup) value 0x10945e8
+    1 key 0x1094378 (#add_method) value 0x1094608
+    2 key 0x10943c8 (#allocate) value 0x1094138
+    3 key 0x1094458 (#delegate) value 0x1094118
+obj Proto 0x1094628 vt Proto_vt 0x10940b8
+vt Object_vt 0x1094158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1094648 vt Object_vt 0x1094158
+vt Symbol_vt 0x10941f8 parent 0x1094158 (Object_vt) size 4 tally 3
+    0 key 0x1094488 (#new:) value 0x1094a98
+    1 key 0x1094568 (#print) value 0x1094ab8
+    2 key 0x10945a8 (#length) value 0x1094278
+obj Symbol 0x1094668 vt Symbol_vt 0x10941f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+Segmentation fault (core dumped)
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0xcb90b8 parent 0xcb9158 (Object_vt) size 4 tally 4
+    0 key 0xcb9338 (#lookup) value 0xcb95e8
+    1 key 0xcb9378 (#add_method) value 0xcb9608
+    2 key 0xcb93c8 (#allocate) value 0xcb9138
+    3 key 0xcb9458 (#delegate) value 0xcb9118
+obj Proto 0xcb9628 vt Proto_vt 0xcb90b8
+vt Object_vt 0xcb9158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0xcb9648 vt Object_vt 0xcb9158
+vt Symbol_vt 0xcb91f8 parent 0xcb9158 (Object_vt) size 4 tally 3
+    0 key 0xcb9488 (#new:) value 0xcb9a98
+    1 key 0xcb9568 (#print) value 0xcb9ab8
+    2 key 0xcb95a8 (#length) value 0xcb9278
+obj Symbol 0xcb9668 vt Symbol_vt 0xcb91f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x1b530b8 parent 0x1b53158 (Object_vt) size 4 tally 4
+    0 key 0x1b53338 (#lookup) value 0x1b535e8
+    1 key 0x1b53378 (#add_method) value 0x1b53608
+    2 key 0x1b533c8 (#allocate) value 0x1b53138
+    3 key 0x1b53458 (#delegate) value 0x1b53118
+obj Proto 0x1b53628 vt Proto_vt 0x1b530b8
+vt Object_vt 0x1b53158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1b53648 vt Object_vt 0x1b53158
+vt Symbol_vt 0x1b531f8 parent 0x1b53158 (Object_vt) size 4 tally 3
+    0 key 0x1b53488 (#new:) value 0x1b53a98
+    1 key 0x1b53568 (#print) value 0x1b53ab8
+    2 key 0x1b535a8 (#length) value 0x1b53278
+obj Symbol 0x1b53668 vt Symbol_vt 0x1b531f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x10850b8 parent 0x1085158 (Object_vt) size 4 tally 4
+    0 key 0x1085338 (#lookup) value 0x10855e8
+    1 key 0x1085378 (#add_method) value 0x1085608
+    2 key 0x10853c8 (#allocate) value 0x1085138
+    3 key 0x1085458 (#delegate) value 0x1085118
+obj Proto 0x1085628 vt Proto_vt 0x10850b8
+vt Object_vt 0x1085158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1085648 vt Object_vt 0x1085158
+vt Symbol_vt 0x10851f8 parent 0x1085158 (Object_vt) size 4 tally 3
+    0 key 0x1085488 (#new:) value 0x1085a98
+    1 key 0x1085568 (#print) value 0x1085ab8
+    2 key 0x10855a8 (#length) value 0x1085278
+obj Symbol 0x1085668 vt Symbol_vt 0x10851f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+Segmentation fault (core dumped)
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run
+Starting program: /home/pra/2sem/mos/a2/oh 
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004016b9 in String_append (cls=0x605d58, self=0x605d98, 
+    string2=0x605e98) at ovmhello.c:38
+38		result->chars[self->length+i]=string2->chars[i];
+(gdb) print result->length
+$1 = 5
+(gdb) print result->chars[0]
+Cannot access memory at address 0x0
+(gdb) print result->chars[5]
+Cannot access memory at address 0x5
+(gdb) print result->chars[6]
+Cannot access memory at address 0x6
+(gdb) print self->length
+$2 = 0
+(gdb) print string2->length
+$3 = 5
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 5021] will be killed.
+
+Quit anyway? (y or n) y
+
+pra@pra-VirtualBox:~/2sem/mos/a2$ exit
+exit
+
+Script done on Sunday 26 March 2017 04:23:57 PM IST
+
+Script started on Sunday 26 March 2017 04:24:43 PM IST
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run oh
+Starting program: /home/pra/2sem/mos/a2/oh oh
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004016b9 in String_append (cls=0x605d58, self=0x605d98, 
+    string2=0x605e98) at ovmhello.c:38
+38		result->chars[self->length+i]=string2->chars[i];
+(gdb) print string2
+$1 = (HString) 0x605e98
+(gdb) print string2->length
+$2 = 5
+(gdb) print string2->chars
+$3 = 0x605eb0 "hello"
+(gdb) print self
+$4 = (HString) 0x605d98
+(gdb) print self->length
+$5 = 0
+(gdb) print self->chars
+$6 = 0x0
+(gdb) print h
+$7 = (void *) 0x0
+(gdb) print w
+No symbol "w" in current context.
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 5224] will be killed.
+
+Quit anyway? (y or n) y
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run oh
+Starting program: /home/pra/2sem/mos/a2/oh oh
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004016b9 in String_append (cls=0x605d58, self=0x605e98, 
+    string2=0x605f18) at ovmhello.c:38
+38		result->chars[self->length+i]=string2->chars[i];
+(gdb) print h
+$1 = (void *) 0x0
+(gdb) print w
+No symbol "w" in current context.
+(gdb) print self
+$2 = (HString) 0x605e98
+(gdb) print self->length
+$3 = 5
+(gdb) print self->chars
+$4 = 0x605eb0 "hello"
+(gdb) print result->length
+$5 = 10
+(gdb) print result->chars
+$6 = 0x0
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 5441] will be killed.
+
+Quit anyway? (y or n) y
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run oh
+Starting program: /home/pra/2sem/mos/a2/oh oh
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004016b1 in String_append (cls=0x605d58, self=0x605e98, 
+    string2=0x605f18) at ovmhello.c:38
+38			result->chars[i]=self->chars[i];
+(gdb) print result->chars
+$1 = 0x0
+(gdb) print self->chars
+$2 = 0x605eb0 "hello"
+(gdb) print self->chars[0]
+$3 = 104 'h'
+(gdb) print self->chars[1]
+$4 = 101 'e'
+(gdb) print self->chars[2]
+$5 = 108 'l'
+(gdb) print self->chars[3]
+$6 = 108 'l'
+(gdb) print self->chars[4]
+$7 = 111 'o'
+(gdb) print result->chars[0]
+Cannot access memory at address 0x0
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 5460] will be killed.
+
+Quit anyway? (y or n) y
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run oh
+Starting program: /home/pra/2sem/mos/a2/oh oh
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+[Inferior 1 (process 5481) exited normally]
+(gdb) print result->chars
+Attempt to extract a component of a value that is not a structure pointer.
+(gdb) print result
+$1 = '\000' <repeats 113 times>
+(gdb) quit
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb oh
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from oh...done.
+(gdb) run oh
+Starting program: /home/pra/2sem/mos/a2/oh oh
+vt Proto_vt 0x6050b8 parent 0x605158 (Object_vt) size 4 tally 4
+    0 key 0x605338 (#lookup) value 0x6055e8
+    1 key 0x605378 (#add_method) value 0x605608
+    2 key 0x6053c8 (#allocate) value 0x605138
+    3 key 0x605458 (#delegate) value 0x605118
+obj Proto 0x605628 vt Proto_vt 0x6050b8
+vt Object_vt 0x605158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x605648 vt Object_vt 0x605158
+vt Symbol_vt 0x6051f8 parent 0x605158 (Object_vt) size 4 tally 3
+    0 key 0x605488 (#new:) value 0x605a98
+    1 key 0x605568 (#print) value 0x605ab8
+    2 key 0x6055a8 (#length) value 0x605278
+obj Symbol 0x605668 vt Symbol_vt 0x6051f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+helloworld[Inferior 1 (process 5496) exited normally]
+(gdb) quit
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x1b0a0b8 parent 0x1b0a158 (Object_vt) size 4 tally 4
+    0 key 0x1b0a338 (#lookup) value 0x1b0a5e8
+    1 key 0x1b0a378 (#add_method) value 0x1b0a608
+    2 key 0x1b0a3c8 (#allocate) value 0x1b0a138
+    3 key 0x1b0a458 (#delegate) value 0x1b0a118
+obj Proto 0x1b0a628 vt Proto_vt 0x1b0a0b8
+vt Object_vt 0x1b0a158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1b0a648 vt Object_vt 0x1b0a158
+vt Symbol_vt 0x1b0a1f8 parent 0x1b0a158 (Object_vt) size 4 tally 3
+    0 key 0x1b0a488 (#new:) value 0x1b0aa98
+    1 key 0x1b0a568 (#print) value 0x1b0aab8
+    2 key 0x1b0a5a8 (#length) value 0x1b0a278
+obj Symbol 0x1b0a668 vt Symbol_vt 0x1b0a1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+testing string method append:
+appending hello and space:
+hello appending world:
+hello worldappending newline:
+hello
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x24e70b8 parent 0x24e7158 (Object_vt) size 4 tally 4
+    0 key 0x24e7338 (#lookup) value 0x24e75e8
+    1 key 0x24e7378 (#add_method) value 0x24e7608
+    2 key 0x24e73c8 (#allocate) value 0x24e7138
+    3 key 0x24e7458 (#delegate) value 0x24e7118
+obj Proto 0x24e7628 vt Proto_vt 0x24e70b8
+vt Object_vt 0x24e7158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x24e7648 vt Object_vt 0x24e7158
+vt Symbol_vt 0x24e71f8 parent 0x24e7158 (Object_vt) size 4 tally 3
+    0 key 0x24e7488 (#new:) value 0x24e7a98
+    1 key 0x24e7568 (#print) value 0x24e7ab8
+    2 key 0x24e75a8 (#length) value 0x24e7278
+obj Symbol 0x24e7668 vt Symbol_vt 0x24e71f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:
+hello
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc ovmhello.c -g -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x8ae0b8 parent 0x8ae158 (Object_vt) size 4 tally 4
+    0 key 0x8ae338 (#lookup) value 0x8ae5e8
+    1 key 0x8ae378 (#add_method) value 0x8ae608
+    2 key 0x8ae3c8 (#allocate) value 0x8ae138
+    3 key 0x8ae458 (#delegate) value 0x8ae118
+obj Proto 0x8ae628 vt Proto_vt 0x8ae0b8
+vt Object_vt 0x8ae158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x8ae648 vt Object_vt 0x8ae158
+vt Symbol_vt 0x8ae1f8 parent 0x8ae158 (Object_vt) size 4 tally 3
+    0 key 0x8ae488 (#new:) value 0x8aea98
+    1 key 0x8ae568 (#print) value 0x8aeab8
+    2 key 0x8ae5a8 (#length) value 0x8ae278
+obj Symbol 0x8ae668 vt Symbol_vt 0x8ae1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+pra@pra-VirtualBox:~/2sem/mos/a2$ git commit -a
+[master 26429a0] added string method append and tested functionality
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+pra@pra-VirtualBox:~/2sem/mos/a2$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	oh
+	ovm
+	ovm1.log
+	ovm2.log
+	ovmhelloorg.c
+	ovmorg.c
+	typescript
+	vt
+	vt.c
+
+nothing added to commit but untracked files present (use "git add" to track)
+pra@pra-VirtualBox:~/2sem/mos/a2$ git push origin master
+Username for 'https://github.com': amateurcoder10
+Password for 'https://amateurcoder10@github.com': 
+Counting objects: 3, done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 768 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To https://github.com/amateurcoder10/ovm.git
+   9b7511d..26429a0  master -> master
+pra@pra-VirtualBox:~/2sem/mos/a2$ git add scriptfinal.log
+pra@pra-VirtualBox:~/2sem/mos/a2$ exit
+exit
+
+Script done on Sunday 26 March 2017 04:56:22 PM IST
+
+
+

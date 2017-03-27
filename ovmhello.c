@@ -1,7 +1,7 @@
 #include "ovm.c"
-
+#pragma pack (1)
 // Begin String definitions
-struct mystring { _VTABLE_REF; int length; char *chars; }; 
+struct mystring { _VTABLE_REF; char *chars; int length;  }; 
 typedef struct mystring *HString;
 
 static struct vtable *String_vt;
@@ -11,7 +11,7 @@ static struct object *String;
 static struct object *String_newp(struct closure *cls, struct object *self, char *chars)
 {
 	HString clone = (HString)send(vtof(self), s_vtallocate, sizeof(struct mystring));
-
+	
 	clone->length = strlen(chars);
 	clone->chars  = strdup(chars);
 	return (struct object *)clone;
@@ -40,6 +40,15 @@ static struct object *String_append(struct closure *cls, HString self, HString s
 	return (struct object *)result;
 
 }
+
+//String>>sizeInmemory
+
+static struct object *String_sim(struct closure *cls,HString self)  
+
+{//printf("%lu %lu\n",sizeof(*self),sizeof(struct mystring)); 
+return i2oop(sizeof(*self));}
+
+
 // ------------------------ Begin Array definitions
 struct array { _VTABLE_REF; int length; struct object **contents; };
 typedef struct array *HArray;
@@ -79,14 +88,23 @@ static struct object *Array_atput(struct closure *cls, HArray self, int ix, stru
 	return rval;
 }
 
+//array>>#sizeinmemory
+static struct object *Array_sim(struct closure *cls,HArray self)
+{//printf("%lu %lu\n",sizeof(self),sizeof(struct array));
+ return i2oop(sizeof(*self));}
+
+
 static struct symbol *s_at;
 static struct symbol *s_atput;
 static struct symbol *s_append;
+static struct symbol *s_sim;
+
 int main(int argc, char *argv[])
 {
 	init_ovm();
 	
 	s_append= (typeof(s_append))send(Symbol,s_newp,"append:");
+	s_sim= (typeof(s_append))send(Symbol,s_newp,"sizeinmem:");
 
 	s_at    = (typeof(s_at))   send(Symbol, s_newp, "at:");//newp is already mapped to symbol_newp;send a message with symbol as receiver,selector as s_newp and args as at;its oop is returned
 	s_atput = (typeof(s_atput))send(Symbol, s_newp, "at:put:");
@@ -101,6 +119,7 @@ int main(int argc, char *argv[])
 	send(String_vt, s_vtadd_method, s_length, (method_t)String_length);
 	send(String_vt, s_vtadd_method, s_print,  (method_t)String_print);
 	send(String_vt,s_vtadd_method,s_append,   (method_t)String_append);
+	send(String_vt,s_vtadd_method,s_sim,   (method_t)String_sim);
 
 	struct object *greet = send(String, s_newp, "Object Machine v1.0\n");//send a message to string object with selector new and arg as the phrase;send returns an object pointing to the appropriate method with receiver selector and argumenets;basically a pointer to the message in its entirety
 	struct object *h     = send(String, s_newp, "hello");
@@ -126,6 +145,7 @@ int main(int argc, char *argv[])
 	send(Array_vt,  s_vtadd_method, s_length, (method_t)Array_length);
 	send(Array_vt,  s_vtadd_method, s_at,     (method_t)Array_at);
 	send(Array_vt,  s_vtadd_method, s_atput,  (method_t)Array_atput);
+	send(Array_vt,  s_vtadd_method, s_sim,     (method_t)Array_sim);
 
 	struct object *line = send(Array, s_newp, 4);
 	
@@ -148,6 +168,17 @@ int main(int argc, char *argv[])
 	printf("appending newline:the final string is\n");
 	struct object *hn=send(hw,s_append,nl);
 	send(hn,s_print);
+	
+	printf("\n\n");
+	printf("Testing new method sizeInMemory for string:\n");
+	printf("hello sizeinmemory %d\n", oop2i(send(h, s_sim)));
+	printf("world sizeinmemory %d\n", oop2i(send(w, s_sim)));
+	struct object *hw2=send(h,s_append,w);
+	printf("hello world sizeinmemory %d\n", oop2i(send(hw2, s_sim)));
+	
+	printf("\n\n");
+	printf("Testing new method sizeInMemory for array:\n");
+	printf("array line=[1 2 3 4] sizeinmemory %d\n", oop2i(send(line, s_sim)));
 
 	return 0;
 }
