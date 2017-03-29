@@ -46,7 +46,7 @@ static struct object *String_append(struct closure *cls, HString self, HString s
 static struct object *String_sim(struct closure *cls,HString self)  
 
 {//printf("%lu %lu\n",sizeof(*self),sizeof(struct mystring)); 
-return i2oop(sizeof(*self));}
+return i2oop(sizeof(struct mystring)+strlen(self->chars));}
 
 
 // ------------------------ Begin Array definitions
@@ -91,20 +91,20 @@ static struct object *Array_atput(struct closure *cls, HArray self, int ix, stru
 //array>>#sizeinmemory
 static struct object *Array_sim(struct closure *cls,HArray self)
 {//printf("%lu %lu\n",sizeof(self),sizeof(struct array));
- return i2oop(sizeof(*self));}
+ return i2oop(sizeof(struct array)+sizeof(self->contents));}
 
 
 static struct symbol *s_at;
 static struct symbol *s_atput;
 static struct symbol *s_append;
-static struct symbol *s_sim;
+//static struct symbol *s_sim;
 
 int main(int argc, char *argv[])
 {
 	init_ovm();
 	
 	s_append= (typeof(s_append))send(Symbol,s_newp,"append:");
-	s_sim= (typeof(s_append))send(Symbol,s_newp,"sizeinmem:");
+	//s_sim= (typeof(s_append))send(Symbol,s_newp,"sizeinmem:");
 
 	s_at    = (typeof(s_at))   send(Symbol, s_newp, "at:");//newp is already mapped to symbol_newp;send a message with symbol as receiver,selector as s_newp and args as at;its oop is returned
 	s_atput = (typeof(s_atput))send(Symbol, s_newp, "at:put:");
@@ -178,7 +178,23 @@ int main(int argc, char *argv[])
 	
 	printf("\n\n");
 	printf("Testing new method sizeInMemory for array:\n");
-	printf("array line=[1 2 3 4] sizeinmemory %d\n", oop2i(send(line, s_sim)));
+	printf("array line sizeinmemory %d\n", oop2i(send(line, s_sim)));
+	
+	printf("\n\n");
+	printf("Testing new method sizeInMemory for other objects:\n");
+	printf("SizeInMemory of proto is %d\n",oop2i(send(Proto_vt,s_sim)));
+	printf("SizeInMemory of object is %d\n",oop2i(send(Object_vt,s_sim)));
+	printf("SizeInMemory of symbol is %d\n",oop2i(send(Symbol_vt,s_sim)));
+	printf("sizeinMemory of string is %d\n",oop2i(send(String_vt,s_sim)));
 
+	printf("sizeinmemory of symbol new is %d\n",oop2i(send(s_newp,s_sim)));
+	printf("Sizeinmemory of symbol sizeinmemory is %d\n",oop2i(send(s_sim,s_sim)));
+
+	printf("\n\n");
+	printf("sizeinmemory(hello append world) = sizeinmemory(hello) + sizeinmemory(world) -sizeof(string header)\n");
+	struct object *empty    = send(String, s_newp, "");
+	printf("sizeinmemory of string header is %d\n",oop2i(send(empty, s_sim)));
+	printf("sizeinmemory(hello) + sizeinmemory(world) -sizeof(string header) is %d\n",oop2i(send(h, s_sim))+oop2i(send(w, s_sim))-oop2i(send(empty, s_sim)));
+	printf("hello world sizeinmemory %d\n", oop2i(send(hw2, s_sim)));
 	return 0;
 }

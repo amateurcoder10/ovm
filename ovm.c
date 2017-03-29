@@ -83,6 +83,7 @@ struct root {
 	struct symbol *newp;		// allocate a new instance of x bytes
 	struct symbol *print;		// print contents
 	struct symbol *length;		// size of contents
+	struct symbol *sim;
 
 	struct object *proto;
 	struct object *object;
@@ -102,6 +103,8 @@ struct root {
 #define s_newp		Roots.newp
 #define s_length	Roots.length
 #define s_print		Roots.print
+#define s_sim		Roots.sim
+
 
 #define Atom_vt		Roots.atom_vt
 #define Proto_vt	Roots.proto_vt
@@ -315,7 +318,17 @@ static struct object *symbol_length(struct closure *cls, struct object *self)
 	return i2oop(len);
 }
 
+//Symbol>>sizeInmemory
+static struct object *symbol_sim(struct closure *cls,struct object *self)
+{
+return(i2oop(strlen(((struct symbol *)self)->string)+sizeof(struct symbol)));
 
+}
+//object>>sizeinmemory
+static struct object *sim(struct closure *cls,struct object *self)
+{
+return (i2oop(sizeof(struct object)));
+}
 void init_ovm(void)
 {
 	struct object *selector;
@@ -342,12 +355,14 @@ void init_ovm(void)
 	s_newp         = atom("new:");
 	s_print        = atom("print");
 	s_length       = atom("length");
+	s_sim	       = atom("sizeinmemory:");
 
 	vt_add_method(0, Proto_vt, s_vtlookup,        (method_t)vt_lookup);//closure is 0:send vt,key,method
 	vt_add_method(0, Proto_vt, s_vtadd_method,    (method_t)vt_add_method);
 //lookup and addmethod need to be manually added after which send can be used
 	send(Proto_vt,  s_vtadd_method, s_vtallocate, (method_t)vt_allocate);
 	send(Proto_vt,  s_vtadd_method, s_vtdelegate, (method_t)vt_delegate);
+	
 
 	Proto  = vt_allocate(0, Proto_vt,  0);
 	Object = vt_allocate(0, Object_vt, 0);
@@ -363,7 +378,12 @@ void init_ovm(void)
 	send(vtof(Symbol), s_vtadd_method, s_newp,       (method_t)symbol_newp);//add new print and length methods for symbol
 	send(vtof(Symbol), s_vtadd_method, s_print,      (method_t)symbol_print);
 	send(vtof(Symbol), s_vtadd_method, s_length,     (method_t)symbol_length);
+	send(vtof(Symbol), s_vtadd_method, s_sim,     (method_t)symbol_sim);
 
+	send(Object_vt,  s_vtadd_method, s_sim, (method_t)sim);
+	
+	
+	
 	dump_vt(Symbol_vt); dump_obj(Symbol);
 
 	printf("Object Machine ready\n");

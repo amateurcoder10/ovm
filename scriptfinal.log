@@ -812,5 +812,487 @@ exit
 
 Script done on Sunday 26 March 2017 04:56:22 PM IST
 
+Script started on Monday 27 March 2017 08:44:34 AM IST
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+ovmhello.c: In function ‘String_newp’:
+ovmhello.c:14:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+  printf("%d is the size of char*\n",sizeof(struct mystring));
+         ^
+ovmhello.c: In function ‘String_sim’:
+ovmhello.c:46:86: error: expected ‘)’ before ‘sizeof’
+ ect *String_sim(struct closure *cls,HString self)  {printf("%d %d\n"sizeof(self
+                                                                     ^
+ovmhello.c:46:77: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+ truct object *String_sim(struct closure *cls,HString self)  {printf("%d %d\n"si
+                                                                     ^
+ovmhello.c:46:77: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+ovmhello.c: In function ‘Array_sim’:
+ovmhello.c:89:82: error: expected ‘)’ before ‘sizeof’
+  object *Array_sim(struct closure *cls,HArray self){printf("%d %d\n"sizeof(self
+                                                                     ^
+ovmhello.c:89:73: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+ ic struct object *Array_sim(struct closure *cls,HArray self){printf("%d %d\n"si
+                                                                     ^
+ovmhello.c:89:73: warning: format ‘%d’ expects a matching ‘int’ argument [-Wformat=]
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+ovmhello.c: In function ‘String_newp’:
+ovmhello.c:14:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+  printf("%d is the size of char*\n",sizeof(struct mystring));
+         ^
+ovmhello.c: In function ‘String_sim’:
+ovmhello.c:46:77: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ truct object *String_sim(struct closure *cls,HString self)  {printf("%d %d\n",s
+                                                                     ^
+ovmhello.c:46:77: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘long unsigned int’ [-Wformat=]
+ovmhello.c: In function ‘Array_sim’:
+ovmhello.c:89:73: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ ic struct object *Array_sim(struct closure *cls,HArray self){printf("%d %d\n",s
+                                                                     ^
+ovmhello.c:89:73: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘long unsigned int’ [-Wformat=]
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+ovmhello.c: In function ‘String_newp’:
+ovmhello.c:14:9: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+  printf("%d is the size of char*\n",sizeof(struct mystring));
+         ^
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+ovmhello.c: In function ‘main’:
+ovmhello.c:98:2: error: ‘s_sim’ undeclared (first use in this function)
+  s_sim= (typeof(s_append))send(Symbol,s_newp,"sizeinmem:");
+  ^
+ovmhello.c:98:2: note: each undeclared identifier is reported only once for each function it appears in
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x8bd0b8 parent 0x8bd158 (Object_vt) size 4 tally 4
+    0 key 0x8bd338 (#lookup) value 0x8bd5e8
+    1 key 0x8bd378 (#add_method) value 0x8bd608
+    2 key 0x8bd3c8 (#allocate) value 0x8bd138
+    3 key 0x8bd458 (#delegate) value 0x8bd118
+obj Proto 0x8bd628 vt Proto_vt 0x8bd0b8
+vt Object_vt 0x8bd158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x8bd648 vt Object_vt 0x8bd158
+vt Symbol_vt 0x8bd1f8 parent 0x8bd158 (Object_vt) size 4 tally 3
+    0 key 0x8bd488 (#new:) value 0x8bda98
+    1 key 0x8bd568 (#print) value 0x8bdab8
+    2 key 0x8bd5a8 (#length) value 0x8bd278
+obj Symbol 0x8bd668 vt Symbol_vt 0x8bd1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory:
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x189f0b8 parent 0x189f158 (Object_vt) size 4 tally 4
+    0 key 0x189f338 (#lookup) value 0x189f5e8
+    1 key 0x189f378 (#add_method) value 0x189f608
+    2 key 0x189f3c8 (#allocate) value 0x189f138
+    3 key 0x189f458 (#delegate) value 0x189f118
+obj Proto 0x189f628 vt Proto_vt 0x189f0b8
+vt Object_vt 0x189f158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x189f648 vt Object_vt 0x189f158
+vt Symbol_vt 0x189f1f8 parent 0x189f158 (Object_vt) size 4 tally 3
+    0 key 0x189f488 (#new:) value 0x189fa98
+    1 key 0x189f568 (#print) value 0x189fab8
+    2 key 0x189f5a8 (#length) value 0x189f278
+obj Symbol 0x189f668 vt Symbol_vt 0x189f1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory:
+8 12
+hello sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x1a4c0b8 parent 0x1a4c158 (Object_vt) size 4 tally 4
+    0 key 0x1a4c338 (#lookup) value 0x1a4c5e8
+    1 key 0x1a4c378 (#add_method) value 0x1a4c608
+    2 key 0x1a4c3c8 (#allocate) value 0x1a4c138
+    3 key 0x1a4c458 (#delegate) value 0x1a4c118
+obj Proto 0x1a4c628 vt Proto_vt 0x1a4c0b8
+vt Object_vt 0x1a4c158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x1a4c648 vt Object_vt 0x1a4c158
+vt Symbol_vt 0x1a4c1f8 parent 0x1a4c158 (Object_vt) size 4 tally 3
+    0 key 0x1a4c488 (#new:) value 0x1a4ca98
+    1 key 0x1a4c568 (#print) value 0x1a4cab8
+    2 key 0x1a4c5a8 (#length) value 0x1a4c278
+obj Symbol 0x1a4c668 vt Symbol_vt 0x1a4c1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x216b0b8 parent 0x216b158 (Object_vt) size 4 tally 4
+    0 key 0x216b338 (#lookup) value 0x216b5e8
+    1 key 0x216b378 (#add_method) value 0x216b608
+    2 key 0x216b3c8 (#allocate) value 0x216b138
+    3 key 0x216b458 (#delegate) value 0x216b118
+obj Proto 0x216b628 vt Proto_vt 0x216b0b8
+vt Object_vt 0x216b158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x216b648 vt Object_vt 0x216b158
+vt Symbol_vt 0x216b1f8 parent 0x216b158 (Object_vt) size 4 tally 3
+    0 key 0x216b488 (#new:) value 0x216ba98
+    1 key 0x216b568 (#print) value 0x216bab8
+    2 key 0x216b5a8 (#length) value 0x216b278
+obj Symbol 0x216b668 vt Symbol_vt 0x216b1f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+8 12
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x18d60b8 parent 0x18d6158 (Object_vt) size 4 tally 4
+    0 key 0x18d6338 (#lookup) value 0x18d65e8
+    1 key 0x18d6378 (#add_method) value 0x18d6608
+    2 key 0x18d63c8 (#allocate) value 0x18d6138
+    3 key 0x18d6458 (#delegate) value 0x18d6118
+obj Proto 0x18d6628 vt Proto_vt 0x18d60b8
+vt Object_vt 0x18d6158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x18d6648 vt Object_vt 0x18d6158
+vt Symbol_vt 0x18d61f8 parent 0x18d6158 (Object_vt) size 4 tally 3
+    0 key 0x18d6488 (#new:) value 0x18d6a98
+    1 key 0x18d6568 (#print) value 0x18d6ab8
+    2 key 0x18d65a8 (#length) value 0x18d6278
+obj Symbol 0x18d6668 vt Symbol_vt 0x18d61f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0xfb90b8 parent 0xfb9158 (Object_vt) size 4 tally 4
+    0 key 0xfb9338 (#lookup) value 0xfb95e8
+    1 key 0xfb9378 (#add_method) value 0xfb9608
+    2 key 0xfb93c8 (#allocate) value 0xfb9138
+    3 key 0xfb9458 (#delegate) value 0xfb9118
+obj Proto 0xfb9628 vt Proto_vt 0xfb90b8
+vt Object_vt 0xfb9158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0xfb9648 vt Object_vt 0xfb9158
+vt Symbol_vt 0xfb91f8 parent 0xfb9158 (Object_vt) size 4 tally 3
+    0 key 0xfb9488 (#new:) value 0xfb9a98
+    1 key 0xfb9568 (#print) value 0xfb9ab8
+    2 key 0xfb95a8 (#length) value 0xfb9278
+obj Symbol 0xfb9668 vt Symbol_vt 0xfb91f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+ovmhello.c: In function ‘String_sim’:
+ovmhello.c:48:29: error: ‘self’ undeclared (first use in this function)
+ {printf("%lu %lu\n",sizeof(*self),sizeof(struct mystring)); 
+                             ^
+ovmhello.c:48:29: note: each undeclared identifier is reported only once for each function it appears in
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0xae60b8 parent 0xae6158 (Object_vt) size 4 tally 4
+    0 key 0xae6338 (#lookup) value 0xae65e8
+    1 key 0xae6378 (#add_method) value 0xae6608
+    2 key 0xae63c8 (#allocate) value 0xae6138
+    3 key 0xae6458 (#delegate) value 0xae6118
+obj Proto 0xae6628 vt Proto_vt 0xae60b8
+vt Object_vt 0xae6158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0xae6648 vt Object_vt 0xae6158
+vt Symbol_vt 0xae61f8 parent 0xae6158 (Object_vt) size 4 tally 3
+    0 key 0xae6488 (#new:) value 0xae6a98
+    1 key 0xae6568 (#print) value 0xae6ab8
+    2 key 0xae65a8 (#length) value 0xae6278
+obj Symbol 0xae6668 vt Symbol_vt 0xae61f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+12 12
+hello sizeinmemory 12
+12 12
+world sizeinmemory 12
+12 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0x10d50b8 parent 0x10d5158 (Object_vt) size 4 tally 4
+    0 key 0x10d5338 (#lookup) value 0x10d55e8
+    1 key 0x10d5378 (#add_method) value 0x10d5608
+    2 key 0x10d53c8 (#allocate) value 0x10d5138
+    3 key 0x10d5458 (#delegate) value 0x10d5118
+obj Proto 0x10d5628 vt Proto_vt 0x10d50b8
+vt Object_vt 0x10d5158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0x10d5648 vt Object_vt 0x10d5158
+vt Symbol_vt 0x10d51f8 parent 0x10d5158 (Object_vt) size 4 tally 3
+    0 key 0x10d5488 (#new:) value 0x10d5a98
+    1 key 0x10d5568 (#print) value 0x10d5ab8
+    2 key 0x10d55a8 (#length) value 0x10d5278
+obj Symbol 0x10d5668 vt Symbol_vt 0x10d51f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ gcc -g ovmhello.c -o oh
+pra@pra-VirtualBox:~/2sem/mos/a2$ ./oh
+vt Proto_vt 0xab80b8 parent 0xab8158 (Object_vt) size 4 tally 4
+    0 key 0xab8338 (#lookup) value 0xab85e8
+    1 key 0xab8378 (#add_method) value 0xab8608
+    2 key 0xab83c8 (#allocate) value 0xab8138
+    3 key 0xab8458 (#delegate) value 0xab8118
+obj Proto 0xab8628 vt Proto_vt 0xab80b8
+vt Object_vt 0xab8158 parent (nil) ((nil)_vt) size 2 tally 0
+obj Object 0xab8648 vt Object_vt 0xab8158
+vt Symbol_vt 0xab81f8 parent 0xab8158 (Object_vt) size 4 tally 3
+    0 key 0xab8488 (#new:) value 0xab8a98
+    1 key 0xab8568 (#print) value 0xab8ab8
+    2 key 0xab85a8 (#length) value 0xab8278
+obj Symbol 0xab8668 vt Symbol_vt 0xab81f8
+Object Machine ready
+Testing String
+Object Machine v1.0
+hello length 5
+hello world
+Testing Array
+array elements 4
+hello world
+
+
+testing string method append:
+appending hello and space:
+hello 
+appending world:
+hello world
+appending newline:the final string is
+hello world
+
+
+Testing new method sizeInMemory for string:
+hello sizeinmemory 12
+world sizeinmemory 12
+hello world sizeinmemory 12
+
+
+Testing new method sizeInMemory for array:
+array line=[1 2 3 4] sizeinmemory 12
+pra@pra-VirtualBox:~/2sem/mos/a2$ git commit -a
+[master bc2f2a3] added method size in memory for string and array objects
+ 2 files changed, 850 insertions(+), 3 deletions(-)
+ create mode 100644 scriptfinal.log
+pra@pra-VirtualBox:~/2sem/mos/a2$ git push origin master
+Username for 'https://github.com': amateurcoder10
+Password for 'https://amateurcoder10@github.com': 
+Counting objects: 4, done.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 5.16 KiB | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local objects.
+To https://github.com/amateurcoder10/ovm.git
+   26429a0..bc2f2a3  master -> master
+pra@pra-VirtualBox:~/2sem/mos/a2$ exit
+exit
+
+Script done on Monday 27 March 2017 09:11:41 AM IST
+
+pra@pra-VirtualBox:~/2sem/mos/a2$ gdb vt
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from vt...done.
+(gdb) break 206
+Breakpoint 1 at 0x400e95: file vt.c, line 206.
+(gdb) run vt
+Starting program: /home/pra/2sem/mos/a2/vt vt
+sizeof int     = 4
+sizeof pointer = 8
+sizeof object  = 0
+sizeof vtable  = 40
+sizeof symbol  = 8
+alloc (nil) size  40 = mem 0x603420 oop 0x603428
+alloc (nil) size  40 = mem 0x6034c0 oop 0x6034c8
+alloc (nil) size  40 = mem 0x603560 oop 0x603568
+
+Breakpoint 1, init_ovm (mach=0x6020a0 <Foo>) at vt.c:208
+208		mach->proto_vt->parent = mach->object_vt;
+(gdb) print mach->object_vt
+$1 = (struct vtable *) 0x603568
+(gdb) print mach->object_vt->_vt[-1]
+$2 = (struct vtable *) 0x6034c8
+(gdb) print mach->proto_vt
+$3 = (struct vtable *) 0x6034c8
+(gdb) quit
+A debugging session is active.
+
+	Inferior 1 [process 10310] will be killed.
+
+Quit anyway? (y or n) y
 
 
